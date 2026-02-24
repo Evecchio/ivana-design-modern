@@ -17,19 +17,21 @@
 				<a class="text-sm font-semibold hover:text-primary transition-colors {% if item.current %}text-primary{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
 			{% endfor %}
 		</nav>
-		<div class="flex-1 max-w-lg hidden md:block">
-			<form action="{{ store.search_url }}" method="get" class="relative group">
-				<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-					<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors text-xl">search</span>
-				</div>
-				<input 
-					type="text" 
-					name="q" 
-					placeholder="{{ '¿Qué estás buscando?' | translate }}" 
-					class="w-full bg-slate-100 dark:bg-slate-800/50 border-2 border-transparent py-2.5 pl-11 pr-4 rounded-xl text-sm font-medium focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/5 transition-all outline-none"
-					autocomplete="off"
-				/>
-			</form>
+		<div class="flex-1 max-w-lg hidden md:flex justify-end pr-4">
+			<div class="js-search-container relative flex items-center justify-end w-full max-w-[40px] transition-all duration-300 ease-in-out overflow-hidden" id="search-container">
+				<form action="{{ store.search_url }}" method="get" class="js-search-form flex items-center w-full bg-slate-100 dark:bg-slate-800/50 rounded-xl border-2 border-transparent transition-all focus-within:border-primary/40 focus-within:bg-white focus-within:ring-4 focus-within:ring-primary/5">
+					<div class="p-2.5 flex items-center justify-center cursor-pointer js-search-trigger">
+						<span class="material-symbols-outlined text-slate-500 text-2xl">search</span>
+					</div>
+					<input 
+						type="text" 
+						name="q" 
+						placeholder="{{ '¿Qué estás buscando?' | translate }}" 
+						class="js-search-input w-0 opacity-0 bg-transparent border-none py-2.5 pr-4 text-sm font-medium transition-all duration-300 outline-none placeholder:text-slate-400"
+						autocomplete="off"
+					/>
+				</form>
+			</div>
 		</div>
 		<div class="flex items-center gap-2">
 			<button class="md:hidden p-2 js-toggle-search">

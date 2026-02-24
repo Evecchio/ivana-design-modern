@@ -33,20 +33,48 @@
 			/* Brand Focus & Interaction */
 			.focus-primary:focus { border-color: #ee4b2b !important; box-shadow: 0 0 0 2px rgba(238, 75, 43, 0.15) !important; outline: none; }
 			
-			/* Card Symmetry & Backgrounds */
-			.js-product-container { background: white; border-radius: 4px; overflow: hidden; }
-			.img-absolute-centered { background-color: #f3f4f6 !important; } /* Match light grey in reference */
-			
-			/* Line Clamp Utility */
-			.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+			/* Search Expansion */
+			.js-search-container.expanded { max-width: 480px !important; }
+			.js-search-container.expanded .js-search-input { w-full !important; opacity: 1 !important; width: 100% !important; }
+			.js-search-container.expanded form { background-color: white !important; border-color: rgba(238, 75, 43, 0.4) !important; }
 		</style>
 		<script>
 			document.addEventListener('DOMContentLoaded', () => {
-				// Mobile Search Toggle
+				/* ─── Expandable Search Bar ─── */
+				const searchContainer = document.querySelector('.js-search-container');
+				const searchTrigger = document.querySelector('.js-search-trigger');
+				const searchInput = document.querySelector('.js-search-input');
+
+				if (searchTrigger && searchContainer && searchInput) {
+					searchTrigger.addEventListener('click', (e) => {
+						if (!searchContainer.classList.contains('expanded')) {
+							e.preventDefault();
+							searchContainer.classList.add('expanded');
+							searchInput.focus();
+						}
+					});
+
+					// Use a capture listener for outside clicks
+					document.addEventListener('click', (e) => {
+						if (!searchContainer.contains(e.target) && searchContainer.classList.contains('expanded')) {
+							searchContainer.classList.remove('expanded');
+						}
+					});
+
+					document.addEventListener('keydown', (e) => {
+						if (e.key === 'Escape' && searchContainer.classList.contains('expanded')) {
+							searchContainer.classList.remove('expanded');
+							searchInput.blur();
+						}
+					});
+				}
+
+				// Mobile search toggle (already in previous step but reinforced)
 				const toggleSearch = document.querySelector('.js-toggle-search');
 				const mobileSearch = document.querySelector('.js-mobile-search');
 				if (toggleSearch && mobileSearch) {
-					toggleSearch.addEventListener('click', () => {
+					toggleSearch.addEventListener('click', (e) => {
+						e.preventDefault();
 						mobileSearch.classList.toggle('hidden');
 						setTimeout(() => mobileSearch.classList.toggle('active'), 10);
 					});
