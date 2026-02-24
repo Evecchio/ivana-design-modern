@@ -31,33 +31,65 @@
 			.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 		</style>
 		<script>
-			document.addEventListener('DOMContentLoaded', () => {
-				document.querySelectorAll('.js-variant-swatch').forEach(swatch => {
-					swatch.addEventListener('click', (e) => {
-						e.preventDefault();
-						const variantId = swatch.getAttribute('data-variant-id');
-						const productContainer = swatch.closest('.group');
-						const variantInput = productContainer.querySelector('.js-variant-input');
-						
-						// Update input
-						if (variantInput) {
-							variantInput.value = variantId;
-							// If LS (TiendaNube scripts) is available, we might need to trigger a change
-							if (window.LS && LS.variants) {
-								// Placeholder for any specific TiendaNube variant update logic if needed
-							}
-						}
+		/* ─── Color swatches: selección de variante + imagen + nombre ─── */
+		document.addEventListener('DOMContentLoaded', function() {
 
-						// Visual feedback
-						productContainer.querySelectorAll('.js-variant-swatch').forEach(s => {
-							s.classList.remove('border-primary', 'scale-110');
-							s.classList.add('border-slate-200', 'dark:border-slate-700');
+			function initSwatches() {
+				document.querySelectorAll('.js-color-swatches:not([data-init])').forEach(function(group) {
+					group.dataset.init = '1';
+
+					/* Buscar la card contenedora subiendo en el DOM */
+					function findCard(el) {
+						for (var i = 0; i < 12; i++) {
+							el = el.parentElement;
+							if (!el) return null;
+							if (el.querySelector && el.querySelector('img') && el.querySelector('input[name="add_to_cart"]')) return el;
+						}
+						return null;
+					}
+					var card = findCard(group);
+
+					group.querySelectorAll('.js-variant-swatch:not([disabled])').forEach(function(btn) {
+						btn.addEventListener('click', function(e) {
+							e.preventDefault();
+
+							/* 1. Estado visual */
+							group.querySelectorAll('.js-variant-swatch').forEach(function(s) {
+								s.classList.remove('border-primary', 'scale-110', 'ring-2', 'ring-primary/20');
+								s.classList.add('border-slate-200');
+							});
+							btn.classList.remove('border-slate-200');
+							btn.classList.add('border-primary', 'scale-110', 'ring-2', 'ring-primary/20');
+
+							/* 2. Nombre del color */
+							var label = group.nextElementSibling;
+							if (label && label.classList.contains('js-selected-color-name') && btn.dataset.colorName) {
+								label.textContent = btn.dataset.colorName;
+							}
+
+							if (!card) return;
+
+							/* 3. Cambiar imagen con fade */
+							var img = card.querySelector('img');
+							var newSrc = btn.dataset.variantImage;
+							if (img && newSrc) {
+								img.style.transition = 'opacity 0.18s ease';
+								img.style.opacity = '0';
+								setTimeout(function() { img.src = newSrc; img.style.opacity = '1'; }, 180);
+							}
+
+							/* 4. Actualizar variante en el formulario */
+							var input = card.querySelector('.js-variant-input, .js-quick-add-form input[name="add_to_cart"]');
+							if (input && btn.dataset.variantId) input.value = btn.dataset.variantId;
 						});
-						swatch.classList.add('border-primary', 'scale-110');
-						swatch.classList.remove('border-slate-200', 'dark:border-slate-700');
 					});
 				});
-			});
+			}
+
+			/* Inicializar al cargar y también si el DOM se actualiza dinámicamente (ej: quickshop) */
+			initSwatches();
+			document.addEventListener('nuvemshop:product:updated', initSwatches);
+		});
 		</script>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
