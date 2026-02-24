@@ -31,7 +31,10 @@
 				/>
 			</form>
 		</div>
-		<div class="flex items-center gap-3">
+		<div class="flex items-center gap-2">
+			<button class="md:hidden p-2 js-toggle-search">
+				<span class="material-symbols-outlined">search</span>
+			</button>
 			{% include "snipplets/header/utilities/account.tpl" %}
 			{% include "snipplets/header/utilities/cart.tpl" %}
 			<button class="lg:hidden p-2 js-toggle-menu">
@@ -39,5 +42,22 @@
 			</button>
 		</div>
 	</div>
+
+	{# Mobile Search - Expanded #}
+	<div class="js-mobile-search hidden absolute top-full left-0 w-full bg-white dark:bg-background-dark p-4 border-b border-primary/10 shadow-xl transition-all duration-300 -translate-y-2 opacity-0">
+		<form action="{{ store.search_url }}" method="get" class="relative">
+			<input 
+				type="text" 
+				name="q" 
+				placeholder="{{ '¿Qué estás buscando?' | translate }}" 
+				class="w-full bg-slate-100 dark:bg-slate-800/50 border-2 border-primary/20 py-3 pl-11 pr-4 rounded-xl text-sm font-medium focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all outline-none"
+			/>
+			<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-primary text-xl">search</span>
+		</form>
+	</div>
 </header>
+
+<style>
+	.js-mobile-search.active { display: block; transform: translateY(0); opacity: 1; }
+</style>
 {% include "snipplets/header/header-modals.tpl" %}

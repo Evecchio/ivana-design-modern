@@ -33,14 +33,24 @@
 			/* Brand Focus & Interaction */
 			.focus-primary:focus { border-color: #ee4b2b !important; box-shadow: 0 0 0 2px rgba(238, 75, 43, 0.15) !important; outline: none; }
 			
-			/* Out of stock diagonal line animation/logic */
+			/* Out of stock diagonal line */
 			.js-variant-swatch[disabled] { cursor: not-allowed !important; opacity: 0.35 !important; }
+			.swatch-diagonal { width: 100%; height: 1.5px; background-color: #94a3b8; transform: rotate(45deg); border-radius: 99px; }
 			
-			/* Search bar expansion logic (mobile) */
-			.search-expanded { grid-column: 1 / -1; order: 10; width: 100%; margin-top: 0.5rem; }
+			/* Header transitions */
+			.js-mobile-search { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 		</style>
 		<script>
 			document.addEventListener('DOMContentLoaded', () => {
+				// Mobile Search Toggle
+				const toggleSearch = document.querySelector('.js-toggle-search');
+				const mobileSearch = document.querySelector('.js-mobile-search');
+				if (toggleSearch && mobileSearch) {
+					toggleSearch.addEventListener('click', () => {
+						mobileSearch.classList.toggle('hidden');
+						setTimeout(() => mobileSearch.classList.toggle('active'), 10);
+					});
+				}
 				document.querySelectorAll('.js-variant-swatch').forEach(swatch => {
 					swatch.addEventListener('click', (e) => {
 						e.preventDefault();
