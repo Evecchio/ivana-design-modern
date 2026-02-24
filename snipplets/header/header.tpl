@@ -1,13 +1,13 @@
 <header class="sticky top-0 z-50 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
-	<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+	<div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-4">
 		<div class="flex items-center gap-2">
 			<a href="{{ store.url }}" title="{{ store.name }}">
 				{% if has_logo %}
-					{{ component('logos/logo', {logo_img_classes: 'h-10 w-auto object-contain'}) }}
+					{{ component('logos/logo', {logo_img_classes: 'h-14 w-auto object-contain'}) }}
 				{% else %}
-					<div class="flex items-center gap-2">
-						<span class="material-symbols-outlined text-primary text-4xl">fitness_center</span>
-						<h1 class="text-2xl font-black tracking-tighter uppercase italic">IVANA<span class="text-primary">DESIGN</span></h1>
+					<div class="flex items-center gap-3">
+						<span class="material-symbols-outlined text-primary text-5xl">fitness_center</span>
+						<h1 class="text-3xl font-black tracking-tighter uppercase italic">IVANA<span class="text-primary">DESIGN</span></h1>
 					</div>
 				{% endif %}
 			</a>
