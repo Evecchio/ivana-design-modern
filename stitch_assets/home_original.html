@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee4b2b",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221310",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<header class="sticky top-0 z-50 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-4xl">fitness_center</span>
+<h1 class="text-2xl font-black tracking-tighter uppercase italic">IVANA<span class="text-primary">DESIGN</span></h1>
+</div>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Capris</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Tops</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Leggings</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Lenceria</a>
+<a class="text-sm font-semibold text-primary" href="#">Sale</a>
+</nav>
+<div class="flex-1 max-w-md hidden md:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-primary/5 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20" placeholder="Buscar productos..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="p-2 hover:bg-primary/10 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold px-1 rounded-full">3</span>
+</button>
+<button class="lg:hidden p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main>
+<section class="py-8 bg-white dark:bg-slate-900/20 overflow-x-auto no-scrollbar border-b border-slate-100 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 flex justify-between md:justify-center gap-8 min-w-max">
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary p-0.5 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover rounded-full" data-alt="Close up of black capri pants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoQvaLv6MwJ5eH_qpOTc3YOp8rYFir5eofaEpcr88FftqdWj4ci40msNI-r5bOUN2H-5X1pTXyLOlOOjvw7UOT495WmCi8ADpJW9gV-Zm_jaoafkMugiEMxyZCzbgTKfqGU3vRzktZVVAi6TQeRbyu5u5TXhJ7diTj60xa4qLPM1--TCPufaEmKqJ4S_DeplqTV6aP00XjEUVMNnOtV-iESf21KqMLa0CVd8QU3kU8ZCz5OH-DK9fW2xiJR0Bs_xbnzqJrC868puqe"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider">Capris</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-transparent group-hover:border-primary/50 p-0.5 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover rounded-full" data-alt="Sport bra in neon colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARdivQ9rL3utipqWnKrEy9eyxj9ujvTyI3OS3Z-siS1dl6WClnhRcpw6Zo7Y7qxgXZTKOHe9K4Jm39L0Pzu_g5kXBQbIG_c8a1ar8vWYrOSIV4yVJ0jEU7HkrO9tKtud4nk5Y1nE3Vjs4KMFwLGsS00om2231Lmo27BQNbh--vnzQQWM1Irej3PJBJtR-e0jfeh1xj3A6DXSUpOw0qmIWKdxgIFdqBhjhE1hRpEaCZ0VZLweyQA4z3roUEWhWzaDraAg-gvFaeh13O"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider">Tops</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-transparent group-hover:border-primary/50 p-0.5 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover rounded-full" data-alt="Woman wearing athletic leggings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP-iB_bq0o00aQ5zuICWRYyguCBsKTW9wVGleicyV99I_GZ-Um4qPxCplqVBeXvBGILtE6CjdSFQ1oAdPH6Ss69DbCQpUeMuFwKei9QibSNWIwmFqGiLK3tzqu5kHB0Qq0RXix2DBlEEzDdKUZTf5LNQgMgW6eHnhUHNP4o894aVxt6TSb_gSGqJr9_kTPi9WolT9F_7a96VX8nMWcNJlNOerHJ2nZDqhC-mrb5Eg0pOQ-AThzK_anX27l51NnjKSCOGd3A6v7RSfy"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider">Leggings</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-transparent group-hover:border-primary/50 p-0.5 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover rounded-full" data-alt="Delicate athletic lingerie" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh8ZqNxdp4c1xXWd0ZyVXJhCcmmUiGCjGWbe-Q00qD8WuH59QoYeUmzOrbW-AdASyWN_DezjQ889RD8u7yV9IhmvPmXEbFI94jNRTf0xpBYGdOkmq21jSm2SE4MnLJNDbev8Ghn6UIHBzdKCRWF08G1rlJ564PsFdM75QlTH0plDH5X4BB1VRmOQLpBFuiLkgi1b73Euvqdgsuj7AU5VBHbGfUb7lZmsdWX-EvMSpV_3TjKOcD0PwL5HFsA601dS35uJlambXfaZCB"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider">Lenceria</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-transparent group-hover:border-primary/50 p-0.5 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover rounded-full" data-alt="Yoga accessories set" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ_LHdC7DOh3wwfib7yy9vdD5eYhSU8z-BMkAIhDD86PJORt-6e19TdBbme1aBO6gKTwj9BU9dEOHic8bofk3TqZZL_Sg1_YdcUXN60NjBkLaJOUPEmpNOGJrkc6jSPggt4Xpb-APGiAy_X5odetFThf6E0dKx8aJfu7UujlLIUSNhBINnaFRKGy22OsCLgk3ed5M5PPR5LZCUWcAQd0KYAliqAAeKy7xW1HLrClyfQreBeQofuP3WcHr0Ppt2L7cLzV54VbnXBWiR"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider">Accesorios</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-transparent group-hover:border-primary/50 p-0.5 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover rounded-full" data-alt="Abstract fitness pattern for sales" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUFRWp7B0-xU9-bRKDmNXeLyLfVGS7mIaFjit5-wydNZmpuzOpHNJL8g4vnuyWZIiAeKiIpr9lmFh50NKwcv7jJWF1Q62FN2RSfzRblMuW0OtcbZDcyyT8JdlaWsyYUZzaXusOfGtV3xsKmUVJtKsuh64pa2XgPYiJWB4JpmmreW0Z9p-8Czh73rinJSC4TSAU9CJcYN0ytXaAnzesaRqtACCL-TLtvIw70LXl_Zh_G8PqwujqhZqGg28W7DnVCiYVgibzUAvNim7c"/>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Ofertas</span>
+</div>
+</div>
+</section>
+<section class="max-w-7xl mx-auto px-4 py-12">
+<div class="flex items-end justify-between mb-8">
+<div>
+<h2 class="text-3xl font-black uppercase italic tracking-tighter">Super Descuentos</h2>
+<p class="text-slate-500 dark:text-slate-400 font-medium">Nuestras mejores ofertas por tiempo limitado</p>
+</div>
+<a class="text-primary font-bold flex items-center gap-1 group" href="#">
+                    Ver todos <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[3/4] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Woman in Black Diamond high-waist leggings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlG1qeMTz0Ji4muVMv5HedSVc0CKj0AVGcCQxFL9EJ5Oo8uFcDzBs7QGNrUROd6Ef3aJo41EdS7edzDkR1l-1IbWCSjF39qHUTm64XmX3GNwquUT-M3jcTjW_faxqtPNB4EOOV9oyFjBTVQV6_ZnX4Lx4Qsidjac4Vnlf83jI9_5SGqHoSeiEjYhy1ajrHq1qXMDxvEV_MM8g6Ou9rRTqV6mjE9K8izfCPjAzz-LVeiZhrLiFUFqjW5EHCNKVrR2N1CqH9TfKOg-sU"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-xs font-black px-3 py-1 rounded-full">-40%</span>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-white text-slate-900 font-bold py-3 rounded-lg flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span> Quick Add
+                            </button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Legging Black Diamond</h3>
+<div class="mt-2 flex items-center gap-2">
+<span class="text-lg font-black text-primary">$31.190</span>
+<span class="text-sm text-slate-400 line-through">$51.980</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[3/4] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Model wearing Impact Pro pink top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAraYmpvc8GAmaLtWxQK4LHKtIfRXHqIy6V9RhxoqBwBlnwxTuHAypxVxnU-MKz-yLbfRm7b8adT8qIUYSCBGWh59Xj18FyHyhetSRkjjXvgRnjDmuhfauzqanSBAig7haKNu2FGcWozTEw7QDn0V9K14tmyFi3RftjUUFxAmGKN0FVEDw2xU9ld7v0m1h0LFW8pxJze19P4RUQ72zZAlO2AM_HXMLpBQrLqbY1nV0HAeckc0x7zwtqpMUxYC5erlYEVHKVrPa1Robq"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-xs font-black px-3 py-1 rounded-full">-15%</span>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-white text-slate-900 font-bold py-3 rounded-lg flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span> Quick Add
+                            </button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Top Impact Pro</h3>
+<div class="mt-2 flex items-center gap-2">
+<span class="text-lg font-black text-primary">$18.500</span>
+<span class="text-sm text-slate-400 line-through">$21.760</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[3/4] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close up of Pink cycling shorts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV1o7UDhMnpWce-upQuWa6ngJWHmhgKic0ke6i5HcvEltgtXN5J6DZcvxt1nloCAurQXRyuV4vuyjCOFSyw0OEbvKGLDgQ3gdn8k37ioa40wVZYEjb0rp0PkxyNw0G6tteoGDimR0gnw6rlJCLl-tl1BlMe8y6DiC4mteQrWQx6H9lzt9Gur32k8h2BfVgP3M5Ov-zvX9eA8TsJ1_OWkOSZLqNenmvYPPdFsNezgJ0LF1rDsLc2S4QEe3Gn7atAFCCsFZYsjYeLACj"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-xs font-black px-3 py-1 rounded-full">-20%</span>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-white text-slate-900 font-bold py-3 rounded-lg flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span> Quick Add
+                            </button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Calza Ciclista Pink</h3>
+<div class="mt-2 flex items-center gap-2">
+<span class="text-lg font-black text-primary">$15.200</span>
+<span class="text-sm text-slate-400 line-through">$19.000</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[3/4] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Premium seamless set in blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjSL86fFz13jAQM2eik9GCJJZjE1nVSDrBi6EjzTgiYI_0HqnNRM5hh9_1PoidauJFBnCNT5TKEoO-0Jn-TvAwr8Kxe-vCsxJC0ZWCSqB4O1ol2Zkm1kWyuMFmG1e8lrrqVrmhkzOMJmiJory5hS3LAhlYvByI6m1daxgi4LyjIqe73mfkVZyen-jmJxU_DRDk06-hflocmwCn3QkYjKqpU2SRCJs1QUyxbOeFXiatSwxx66zwL_9Q7gghESoYMveMea9bec7z6BO2"/>
+<span class="absolute top-4 left-4 bg-slate-900 text-white text-xs font-black px-3 py-1 rounded-full">NEW</span>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-white text-slate-900 font-bold py-3 rounded-lg flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span> Quick Add
+                            </button>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Conjunto Seamless</h3>
+<div class="mt-2 flex items-center gap-2">
+<span class="text-lg font-black text-primary">$42.000</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-background-dark py-16">
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex flex-col items-center text-center mb-10">
+<h2 class="text-white text-2xl font-black uppercase tracking-widest mb-4">Encontrá tu talle ideal</h2>
+<div class="w-20 h-1 bg-primary hover:bg-[#d43d1f]"></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+<button class="border border-white/20 hover:border-primary hover:text-primary py-6 text-xl font-bold text-white transition-all rounded-lg group">
+                        XS
+                        <p class="text-[10px] text-white/40 group-hover:text-primary/60 font-normal uppercase mt-1">Extra Small</p>
+</button>
+<button class="border border-white/20 hover:border-primary hover:text-primary py-6 text-xl font-bold text-white transition-all rounded-lg group">
+                        S
+                        <p class="text-[10px] text-white/40 group-hover:text-primary/60 font-normal uppercase mt-1">Small</p>
+</button>
+<button class="border border-white/20 hover:border-primary hover:text-primary py-6 text-xl font-bold text-white transition-all rounded-lg group">
+                        M
+                        <p class="text-[10px] text-white/40 group-hover:text-primary/60 font-normal uppercase mt-1">Medium</p>
+</button>
+<button class="border border-white/20 hover:border-primary hover:text-primary py-6 text-xl font-bold text-white transition-all rounded-lg group">
+                        L
+                        <p class="text-[10px] text-white/40 group-hover:text-primary/60 font-normal uppercase mt-1">Large</p>
+</button>
+</div>
+</div>
+</section>
+<section class="py-20 bg-primary/5">
+<div class="max-w-4xl mx-auto px-4 text-center">
+<span class="text-primary font-black uppercase tracking-tighter text-sm mb-4 block">Manifesto</span>
+<h2 class="text-4xl md:text-5xl font-black uppercase italic tracking-tighter mb-8 dark:text-white">Somos Ivana Design</h2>
+<p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                    Diseñamos para la mujer que no se detiene. Nuestra misión es fusionar la máxima tecnología en tejidos deportivos con un diseño vanguardista y elegante. Ivana Design no es solo ropa, es el empoderamiento que sentís cuando cruzás la meta, terminás tu rutina o simplemente conquistás tu día.
+                </p>
+<div class="mt-12">
+<button class="bg-primary text-white font-black px-10 py-4 rounded-full uppercase tracking-widest text-sm hover:brightness-110 transition-all shadow-xl shadow-primary/20 hover:bg-[#d43d1f]">
+                        Conocé nuestra historia
+                    </button>
+</div>
+</div>
+</section>
+<section class="py-16 max-w-7xl mx-auto px-4">
+<h2 class="text-2xl font-black uppercase italic tracking-tighter mb-10 text-center">Nuestra Comunidad</h2>
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex-1 bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 italic mb-6">"La calidad de las calzas es increíble. No se transparentan nada y el calce es perfecto para entrenar pesado."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">MS</div>
+<div>
+<p class="font-bold text-sm">Martina Suarez</p>
+<p class="text-xs text-slate-400">Compradora Verificada</p>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 italic mb-6">"Los tops tienen un soporte excelente. Me encanta el diseño seamless, es súper cómodo para usar todo el día."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">LR</div>
+<div>
+<p class="font-bold text-sm">Lucía Rojas</p>
+<p class="text-xs text-slate-400">Compradora Verificada</p>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 italic mb-6">"El envío fue súper rápido y el packaging es de primera. Definitivamente voy a volver a comprar."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">CP</div>
+<div>
+<p class="font-bold text-sm">Camila Paz</p>
+<p class="text-xs text-slate-400">Compradora Verificada</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-background-dark text-white pt-16 pb-8 border-t border-white/5">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<div>
+<h2 class="text-2xl font-black tracking-tighter uppercase italic mb-6">IVANA<span class="text-primary">DESIGN</span></h2>
+<p class="text-white/60 text-sm leading-relaxed mb-6">Premium Sportswear para mujeres que buscan rendimiento y estilo en cada movimiento.</p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined text-sm">share</span></a>
+<a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined text-sm">photo_camera</span></a>
+<a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined text-sm">chat</span></a>
+</div>
+</div>
+<div>
+<h3 class="font-black uppercase text-xs tracking-widest mb-6 text-primary">Categorías</h3>
+<ul class="space-y-4 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Leggings</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Tops</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Capris</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Lenceria</a></li>
+<li><a class="hover:text-white transition-colors" href="#">New Arrivals</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-black uppercase text-xs tracking-widest mb-6 text-primary">Ayuda</h3>
+<ul class="space-y-4 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Envíos y Entregas</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Cambios y Devoluciones</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Guía de Talles</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Contacto</a></li>
+<li><a class="hover:text-white transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-black uppercase text-xs tracking-widest mb-6 text-primary">Newsletter</h3>
+<p class="text-sm text-white/60 mb-4">Sumate a nuestra comunidad y obtené un 10% OFF en tu primera compra.</p>
+<form class="flex flex-col gap-3">
+<input class="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm focus:border-primary focus:ring-0" placeholder="Email" type="email"/>
+<button class="bg-primary py-2 rounded-lg font-bold text-sm uppercase tracking-widest hover:brightness-110 transition-all hover:bg-[#d43d1f]">Suscribirme</button>
+</form>
+</div>
+</div>
+<div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-[10px] text-white/40 uppercase tracking-widest">© 2024 Ivana Design. All Rights Reserved.</p>
+<div class="flex items-center gap-4 opacity-50 grayscale hover:grayscale-0 transition-all">
+<img class="h-6" data-alt="Visa payment icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLSXHU7Tj7YoQuP8i2n-AGRiGpLXLjRfgQDL7z18RmQbKsb3-QwDWUGsByFSioxDonUInycu6wabus3e6qPXG_xb4Lbu4GJRnbew84zrtM28fTQCV0xp25p9FlFPV7J54JLH2HeHYzjPO_WY-rptkeWhPvISFOtVPjMtqJkntSY6ToeBi54xL-V9qUMTf7PLV7Dw7p7IEozN1nuSrra8BLY6EJ8idjX_Bf8W2XVUo1CitWTis3P3enJ1aBA8Hq6SoBCHWnZLtj0yPq"/>
+<img class="h-6" data-alt="Mastercard payment icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIuj5tFcRSMoWfwJ2xNJ25-J55UO4IX-2A9G-_MokcKw9dmEuYzjxwiw6h07tN7v-_cETbhz52TsPrwBMYEHvu1YJFDESS8oLgzhazpVDGccbVJ8aFeMZCLIfHTYm7_WiJP_qt3v-Pp55eQNfnXHJgfuc-Kuowlm4W1axh9LSJ6MgnV-mAyQ8S5UXznGME3bhutRdf9nJ4I5FVdu5JHimoy1I7gwGQW32LE2J4o_h7kBvGelVxztzmYlPvXtHD5W2obFNac-RXa_Hh"/>
+<img class="h-6" data-alt="Mercado Pago payment icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjoNonUV5cHFMlPREMPdgsk1zR6uSL1cRByCvSCynmUuewZkcr0_fSzsR9R_6ihWWRPrKKiKmJTP1ZbTPBQ-30mYSl5HZAXs9Bn-dYoSZZ3WLP40F_USXgXlWbwxau2bbJiD8d_VJkFeQeI8fbm-UgIpiFmQ3gzVfvWHsXDQOXJ7nLFk8LgyhUfi2hKgT658m0cLfe4J40TzGOwsuMclE_5adTtUfPTOxchroogGbxb9UawOOOZwdiOJfojxs15xGsm_HVb-7BXYDe"/>
+<img class="h-6" data-alt="American Express payment icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaBrTgLic2Q3ONhF8OJcKmnw0Zos1QefCxyZJcuRS4gtT4RrMhnAATegAuW9qA2OP50dAktWoIdvRfUT8_40ZHSpVGLY0mIefupqcBwAl5XnaPsLsAaDx8hZWNYKxymlUSElu2U4SJgUsuRfzPyqNP3UCoZNz4wvpq0ryhz_hvPPG4tZ1tmVY5FlwHo8iDpNQhkAtY51YbtQFwMAgzeFcpZDoUnTcu_r2sZ7MbMHv2mkeN4jPtp8WqyNgmVgA-Kd_ntpGphDbHTov2"/>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

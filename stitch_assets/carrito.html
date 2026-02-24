@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee4b2b",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221310",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="layout-container flex flex-col min-h-screen">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-6 md:px-10 py-4 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary flex items-center justify-center rounded-lg text-white">
+<span class="material-symbols-outlined">diamond</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Ivana Design</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Colecciones</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Joyas</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Relojes</a>
+<a class="text-primary text-sm font-medium" href="#">Ofertas</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden lg:flex flex-col min-w-40 !h-10 max-w-64 relative">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 absolute left-3 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-slate-100 dark:bg-slate-800 h-full placeholder:text-slate-500 pl-10 text-sm font-normal" placeholder="Buscar joyas..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full px-6 md:px-10 py-8">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 mb-8 text-sm text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary" href="#">Inicio</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">Carrito</span>
+</nav>
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-slate-100 mb-2">Tu Carrito</h1>
+<p class="text-slate-600 dark:text-slate-400 mb-10">Revisa tus productos antes de finalizar la compra.</p>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Product List -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Item 1 -->
+<div class="flex flex-col sm:flex-row gap-6 bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="w-full sm:w-32 h-32 bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Silver necklace with elegant diamond pendant" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwzjWn5HMOMtKwFyohlwK7M3OBRFUeBoHoouwV9jBqNdPVNoaKJYN5mrPIU1q1dD86SqWeagT3kmRRw_tX4tt1ZjiluQNl7jV8A5ae6vWo4YxOI4GATRR8B5jEF4BFQNOsK--O4jdDZLKBnNSowm0PTRoBfrOEqhWJQgiL7HeO6MLVkc7tOuHXrfWwnEGdPHkXWSXFX0YbVY-GCUCOmOvlBuHt1ASBxDYZDn6ZDttEv1LOKHD1XnXJxDX-mOS2D1tupR_4eWI48vfC');"></div>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Collar de Plata Esterlina</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Ref: IV-90234</p>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="mt-4 flex flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="font-medium text-slate-900 dark:text-slate-100">Talla:</span> Única
+                                </div>
+<div class="flex items-center gap-3">
+<span class="font-medium text-slate-900 dark:text-slate-100">Cantidad:</span>
+<div class="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg">
+<button class="px-2 py-1 hover:bg-slate-50 dark:hover:bg-slate-800">-</button>
+<span class="px-3">1</span>
+<button class="px-2 py-1 hover:bg-slate-50 dark:hover:bg-slate-800">+</button>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-4 flex justify-end">
+<span class="text-xl font-bold text-slate-900 dark:text-slate-100">85,00 €</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col sm:flex-row gap-6 bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="w-full sm:w-32 h-32 bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Luxurious 18k gold ring with small diamond" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwR1xs4DVwfRJyyaEatzY2EXE2VRz_eBN_OS_aLtynUQnXT80cal2ZNatLs2ueQ8YX93ingYM7Zopk0D6rdWPXKzq7j_kWeKQA6eWlagRnzk9EzNiYyIm1rd58jRcyTuXJ1xxHFjs6ALxFs6AWTsrvHO0RwWIKRNv-1QKfrGNLUNFtmuG-f7pcVTFT0vYNi7Nr8Obv_bhl_bhNBYCLEsy84NV-hd0tczNVm3lzW_hPPw65hkhVTmbKT2bSuXJwLrV8-Cd6WAJ7npcv');"></div>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Anillo de Oro 18k</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Ref: IV-88210</p>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="mt-4 flex flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="font-medium text-slate-900 dark:text-slate-100">Talla:</span> 14
+                                </div>
+<div class="flex items-center gap-3">
+<span class="font-medium text-slate-900 dark:text-slate-100">Cantidad:</span>
+<div class="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg">
+<button class="px-2 py-1 hover:bg-slate-50 dark:hover:bg-slate-800">-</button>
+<span class="px-3">1</span>
+<button class="px-2 py-1 hover:bg-slate-50 dark:hover:bg-slate-800">+</button>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-4 flex justify-end">
+<span class="text-xl font-bold text-slate-900 dark:text-slate-100">120,00 €</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary -->
+<div class="lg:col-span-1">
+<div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-md border border-slate-100 dark:border-slate-800 sticky top-28">
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Resumen del pedido</h2>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between text-slate-600 dark:text-slate-400">
+<span>Subtotal</span>
+<span class="font-medium text-slate-900 dark:text-slate-100">205,00 €</span>
+</div>
+<div class="flex justify-between text-slate-600 dark:text-slate-400">
+<span>Envío</span>
+<span class="font-medium text-slate-900 dark:text-slate-100">Gratis</span>
+</div>
+<div class="flex justify-between text-slate-600 dark:text-slate-400">
+<span>Impuestos</span>
+<span class="font-medium text-slate-900 dark:text-slate-100">Calculados al pagar</span>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-end">
+<span class="text-lg font-bold text-slate-900 dark:text-slate-100">Total</span>
+<div class="text-right">
+<span class="text-2xl font-black text-primary">205,00 €</span>
+<p class="text-xs text-slate-400 mt-1">IVA incluido</p>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg transition-all shadow-lg shadow-primary/20">
+                                Finalizar Compra
+                            </button>
+<button class="w-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-bold py-4 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+                                Seguir Comprando
+                            </button>
+</div>
+<div class="mt-8 flex flex-col gap-4">
+<div class="flex items-center gap-3 text-sm text-slate-500">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span>Pago 100% seguro y encriptado</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-slate-500">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<span>Envío gratuito en pedidos &gt; 50€</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 py-12 px-6 md:px-10 mt-12">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-6 bg-primary flex items-center justify-center rounded text-white">
+<span class="material-symbols-outlined text-sm">diamond</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Ivana Design</h2>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Exclusividad y elegancia en cada detalle. Diseños artesanales con materiales de la más alta calidad.
+                    </p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">camera</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-slate-100 font-bold mb-6">Explorar</h3>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Nuevas Llegadas</a></li>
+<li><a class="hover:text-primary" href="#">Best Sellers</a></li>
+<li><a class="hover:text-primary" href="#">Edición Limitada</a></li>
+<li><a class="hover:text-primary" href="#">Cuidado de Joyas</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-slate-100 font-bold mb-6">Soporte</h3>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Seguimiento</a></li>
+<li><a class="hover:text-primary" href="#">Devoluciones</a></li>
+<li><a class="hover:text-primary" href="#">Preguntas Frecuentes</a></li>
+<li><a class="hover:text-primary" href="#">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-slate-100 font-bold mb-6">Newsletter</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Suscríbete para recibir ofertas exclusivas.</p>
+<div class="flex gap-2">
+<input class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg flex-1 text-sm focus:ring-1 focus:ring-primary" placeholder="Email" type="email"/>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold">Unirse</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto border-t border-slate-100 dark:border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+<p>© 2024 Ivana Design. Todos los derechos reservados.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary" href="#">Privacidad</a>
+<a class="hover:text-primary" href="#">Términos</a>
+<a class="hover:text-primary" href="#">Cookies</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

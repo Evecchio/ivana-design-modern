@@ -42,7 +42,7 @@
 			{# Row 1: Title (Fixed height for 2 lines) #}
 			<div class="min-h-[40px] mb-2">
 				<a href="{{ product.url }}" title="{{ product.name }}" class="block">
-					<h3 class="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight uppercase tracking-tighter line-clamp-2">{{ product.name }}</h3>
+					<h3 class="text-[13px] font-extrabold text-slate-800 leading-tight uppercase tracking-tighter line-clamp-2">{{ product.name }}</h3>
 				</a>
 			</div>
 
@@ -52,7 +52,7 @@
 					{% if product.compare_at_price > product.price %}
 						<span class="text-xs text-slate-400 line-through font-bold">{{ product.compare_at_price | money }}</span>
 					{% endif %}
-					<span class="text-[19px] font-black text-slate-900 dark:text-white tracking-tighter">{{ product.price | money }}</span>
+					<span class="text-[19px] font-black text-primary tracking-tighter">{{ product.price | money }}</span>
 				</div>
 				{% if product.installments %}
 					<div class="text-[11px] text-slate-500 font-medium">
@@ -62,9 +62,9 @@
 			</div>
 
 			{# Row 3: Swatches & Color Name #}
-			<div class="min-h-[58px] mb-2">
+			<div class="min-h-[52px] mb-3">
 				{% if product.variations %}
-					<div class="js-color-swatches flex flex-wrap gap-1.5 mb-1" data-product-id="{{ product.id }}">
+					<div class="js-color-swatches flex flex-wrap gap-2 mb-1.5" data-product-id="{{ product.id }}">
 						{% for variation in product.variations if variation.name | lower in ['color', 'cor', 'colores', 'cores'] %}
 							{% for option in variation.options %}
 								{% set variant_for_color = false %}
@@ -75,9 +75,8 @@
 								{% endfor %}
 								{% set color_available = variant_for_color and variant_for_color.available %}
 								<button
-									class="js-variant-swatch relative w-[26px] h-[26px] rounded-full border-2 p-0.5 transition-all flex items-center justify-center
-										{% if loop.first %}border-slate-900 scale-110 shadow-sm{% else %}border-slate-200 dark:border-slate-700{% endif %}
-										{% if color_available %}cursor-pointer hover:border-slate-900 hover:scale-110{% else %}opacity-20 cursor-not-allowed{% endif %}"
+									class="js-variant-swatch relative rounded-full transition-all flex items-center justify-center
+										{% if color_available %}cursor-pointer{% else %}opacity-20 cursor-not-allowed{% endif %}"
 									title="{{ option.name }}{% if not color_available %} — Sin stock{% endif %}"
 									{% if variant_for_color %}
 										data-variant-id="{{ variant_for_color.id }}"
@@ -86,10 +85,10 @@
 									{% endif %}
 									{% if not color_available %}disabled aria-disabled="true"{% endif %}
 								>
-									<div class="w-full h-full rounded-full" style="background-color: {{ option.custom_data | default('#cccccc') }}; border: 1px solid rgba(0,0,0,0.08);"></div>
+									<div class="w-full h-full rounded-full" style="background-color: {{ option.custom_data | default('#cccccc') }};"></div>
 									{% if not color_available %}
 										<div class="absolute inset-0 flex items-center justify-center rotate-45 pointer-events-none">
-											<div class="w-full h-[1.5px] bg-slate-400 rounded-full"></div>
+											<div class="w-full h-[1.5px] bg-slate-900 rounded-full"></div>
 										</div>
 									{% endif %}
 								</button>
@@ -111,22 +110,22 @@
 				{% if product.compare_at_price > product.price or product.maxPaymentDiscount.value > 0 %}
 					{% set price_diff = product.compare_at_price > product.price ? (product.compare_at_price - product.price) : 0 %}
 					{% set payment_diff = product.price * (product.maxPaymentDiscount.value / 100) %}
-					<div class="mb-3 px-3 py-2 bg-white border border-green-200 rounded-lg flex items-center justify-between gap-2 shadow-sm">
-						<div class="flex items-center gap-1.5 text-[9px] uppercase font-black text-green-600 tracking-tighter">
-							<span class="material-symbols-outlined text-[13px] text-green-500">verified</span>
-							OPORTUNIDAD DE AHORRO
+					<div class="mb-4 px-3 py-1.5 bg-[#22c55e]/10 border border-[#22c55e]/20 rounded flex items-center justify-between gap-2">
+						<div class="flex items-center gap-1.5 text-[8px] uppercase font-black text-[#22c55e] tracking-tight">
+							<span class="material-symbols-outlined text-[13px]">check_circle</span>
+							AHORRO
 						</div>
-						<span class="text-base font-black text-green-700 tracking-tight">{{ (price_diff + payment_diff) | money }}</span>
+						<span class="text-[15px] font-black text-[#22c55e] tracking-tight">{{ (price_diff + payment_diff) | money }}</span>
 					</div>
 				{% else %}
-					<div class="mb-3 h-[42px]"></div>
+					<div class="mb-4 h-[38px]"></div>
 				{% endif %}
 
-				{# Buy Button: Rigidly at the bottom #}
+				{# Buy Button: Pushed to bottom #}
 				<form action="{{ store.cart_url }}" method="post" class="js-product-form js-quick-add-form" data-store="product-item-{{ product.id }}">
 					<input type="hidden" name="add_to_cart" value="{{ product.variants.first.id }}" class="js-variant-input">
-					<button type="submit" class="js-addtocart js-prod-submit-form w-full bg-[#111827] text-white font-black py-3.5 rounded-lg flex items-center justify-center gap-2 hover:bg-primary transition-all text-[11px] uppercase tracking-[0.1em]">
-						<span class="material-symbols-outlined text-base">add_shopping_cart</span> {{ 'AGREGAR' | translate }}
+					<button type="submit" class="js-addtocart js-prod-submit-form w-full bg-primary text-white font-black py-3 rounded-lg flex items-center justify-center gap-2 hover:brightness-110 transition-all text-[11px] uppercase tracking-widest">
+						<span class="material-symbols-outlined text-lg">shopping_cart</span> {{ 'AGREGAR' | translate }}
 					</button>
 				</form>
 			</div>

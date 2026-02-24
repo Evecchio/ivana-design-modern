@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee4b2b",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221310",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">fitbit</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-extrabold tracking-tight">Ivana Design</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" href="#">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" href="#">New Arrivals</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" href="#">Best Sellers</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" href="#">Collections</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:block relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/50 w-64" placeholder="Search collection..." type="text"/>
+</div>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Breadcrumbs & Title -->
+<div class="mb-8">
+<nav class="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 mb-2">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100">All Products</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-4xl font-black text-slate-900 dark:text-slate-100 tracking-tight">Our Collection</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-2">Elevate your performance with Ivana Design precision activewear.</p>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-medium text-slate-500">124 Products</span>
+<select class="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary">
+<option>Sort by: Popularity</option>
+<option>Newest first</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+</select>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-64 flex-shrink-0 space-y-8">
+<!-- Categories -->
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Categories</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Leggings</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Tops</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Sports Bras</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Shorts</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Accessories</span>
+</label>
+</div>
+</div>
+<!-- Sizes -->
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Size</h3>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 text-xs font-bold border border-slate-200 dark:border-slate-700 rounded hover:border-primary hover:text-primary transition-all">XS</button>
+<button class="py-2 text-xs font-bold border border-primary text-primary bg-primary/5 rounded">S</button>
+<button class="py-2 text-xs font-bold border border-slate-200 dark:border-slate-700 rounded hover:border-primary hover:text-primary transition-all">M</button>
+<button class="py-2 text-xs font-bold border border-slate-200 dark:border-slate-700 rounded hover:border-primary hover:text-primary transition-all">L</button>
+<button class="py-2 text-xs font-bold border border-slate-200 dark:border-slate-700 rounded hover:border-primary hover:text-primary transition-all">XL</button>
+</div>
+</div>
+<!-- Colors -->
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Color</h3>
+<div class="flex flex-wrap gap-3">
+<button class="w-8 h-8 rounded-full border-2 border-primary bg-slate-900 ring-2 ring-transparent ring-offset-2" title="Black"></button>
+<button class="w-8 h-8 rounded-full bg-primary" title="Red"></button>
+<button class="w-8 h-8 rounded-full bg-blue-600" title="Blue"></button>
+<button class="w-8 h-8 rounded-full bg-slate-200 border border-slate-300" title="White"></button>
+<button class="w-8 h-8 rounded-full bg-emerald-500" title="Green"></button>
+</div>
+</div>
+<!-- Price Range -->
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Price Range</h3>
+<div class="space-y-4">
+<input class="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+<div class="flex justify-between text-xs font-medium text-slate-500">
+<span>$0</span>
+<span>$250+</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid -->
+<div class="flex-1">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+<!-- Product Card 1 -->
+<div class="group relative flex flex-col">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100">
+<img class="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500" data-alt="Black high waisted athletic leggings on a model" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLszeg-nzId_E07Vk1zPxKbXz9ivt5N4iHOVvO9BqS8tK_oRSIT3r_c07CQtoQvmLnsvIyEKSE1f2ajVfmibslAroM2BapPp2226vEGwjM_zuQadX6kqkQCa263_6pUnNAfo2Ipiy2ceQvoBGqvW31AY4UE1wTywx78CTapHifc_kplaPrrsxXokjk7IMtL4f9s6VJ_jWLcg1zKS7gByQAMDJ0HdOvW1YnSXMS6ZiigGKHHnCuhxPay1I4sfXoB70H7J9GoWvjTh2B"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                                -40%
+                            </div>
+<button class="absolute top-4 right-4 p-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-full text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/60 to-transparent">
+<button class="w-full bg-primary text-white py-3 rounded-lg font-bold text-sm hover:bg-primary/90 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    Quick Add
+                                </button>
+</div>
+</div>
+<div class="mt-4 flex flex-col">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Legging Black Diamond</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">High-Compression Performance</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="text-lg font-black text-primary">$49.99</span>
+<span class="text-sm text-slate-400 line-through font-medium">$89.99</span>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group relative flex flex-col">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100">
+<img class="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500" data-alt="Bright red sports bra performance top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7tPvI9s8ZLqCVpLBZvghPQCccYhJi_aGs8R3TiAvgr4a_lBE-BnqJcXDbkK5fNEa2L8AfwimNoM1hYvgeIV6bLILTb3xsHHfmsZXs6SsupfxK_RcmUTqBUWmuwN--s9G1FhBEYAu91jqOrRxgd5_DC7WQCSGeyfqFOC3BeOvF69JXz8tKKrLZPAv6zeqqi_U0yk8reXiCBS3jo3Z0WSSUSIHkVNJGTtgNukiqg3UWPryxEs-p_CEKrYZx08KeLf0gaH9mgA-ZITiU"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                                -15%
+                            </div>
+<button class="absolute top-4 right-4 p-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-full text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/60 to-transparent">
+<button class="w-full bg-primary text-white py-3 rounded-lg font-bold text-sm hover:bg-primary/90 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    Quick Add
+                                </button>
+</div>
+</div>
+<div class="mt-4 flex flex-col">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Top Impact Pro</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">High Support Bra - Lava Red</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="text-lg font-black text-primary">$34.00</span>
+<span class="text-sm text-slate-400 line-through font-medium">$40.00</span>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group relative flex flex-col">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100">
+<img class="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500" data-alt="Seamless grey yoga set outfit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAceAiDCiX4TO3ZbweksCG2Xvq0cU4unmGBB65LFCGsar6on9gyIltQMnh0PLMnJD_r3uPWNGeBWHj-5ATZGtjMfgtg4b31VdsMOqy9Am8VHbnmEVJpECMwKpdA-JtPfewX1O_oblp2dalhqeYmQG4WqtVkZUFUEEUq8P1I0z0Ucv2uuMCnztxnhQh3F1LZUxTbc6QCLexyZ3Y6QONmy7RlF1pn8LSHNepaBnVQYluCHX7kSmt_CK2W_2UD7kgY-PbxoZ2zvqLSXH3g"/>
+<button class="absolute top-4 right-4 p-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-full text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/60 to-transparent">
+<button class="w-full bg-primary text-white py-3 rounded-lg font-bold text-sm hover:bg-primary/90 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    Quick Add
+                                </button>
+</div>
+</div>
+<div class="mt-4 flex flex-col">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Zen Seamless Set</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Yoga &amp; Mobility - Smoke Gray</p>
+<div class="mt-2">
+<span class="text-lg font-black text-slate-900 dark:text-slate-100">$120.00</span>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group relative flex flex-col">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100">
+<img class="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500" data-alt="White athletic training top on model" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDudQlD0LXVskp2dp4JAzGuUSxgm0uchk13gQsGneN139Wht4HqFHXkl2Ok6_FE_9gBhP81XVZ9ks69_Q57lFuVnk6vHUl3fhdLRvE5warCTv6IEHV72wffc6xXvAFsSv0-EmAyNP2HQKBaNMN0VknKhKZGVBjCEPM25szb97NsX0eai-cDqNzOCnoG-iWQrik2HpYrGm2VQp4L-21wieyGZrrxW_MdyYIBXIoLLroXMW3hcoRM77EohAXMrHJwDLpvoHzMgoHO8YQI"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                                -25%
+                            </div>
+<button class="absolute top-4 right-4 p-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-full text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/60 to-transparent">
+<button class="w-full bg-primary text-white py-3 rounded-lg font-bold text-sm hover:bg-primary/90 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    Quick Add
+                                </button>
+</div>
+</div>
+<div class="mt-4 flex flex-col">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Flow Training Tee</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Breathable Mesh - Pure White</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="text-lg font-black text-primary">$26.00</span>
+<span class="text-sm text-slate-400 line-through font-medium">$35.00</span>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group relative flex flex-col">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100">
+<img class="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500" data-alt="Fashionable activewear windbreaker jacket" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABYAWrIefxhYy0W5AlCgB5r1JxKfpTUXRux7ZO8kKzcLYdLyvIicOZIYRTkv52QA-c8P_SqaCrbYoYPBXE6zTRBUocXsp-HocoeaWaI8qEKj1Ez8V_PXc5hyLAkRovhpIxOuFBV18zm78kZVeMDDL9rRLFUFpAQN8iyHFJJJCjkDmpQqk59PwOchsy0sIByYIEqbh3lUt0ers5qoyOYRbpFmIbm2Z5pTc634_DKMLbrR8NyUbQm2aGioPOThLug_ZQgfvxJKA5Rfcn"/>
+<button class="absolute top-4 right-4 p-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-full text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/60 to-transparent">
+<button class="w-full bg-primary text-white py-3 rounded-lg font-bold text-sm hover:bg-primary/90 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    Quick Add
+                                </button>
+</div>
+</div>
+<div class="mt-4 flex flex-col">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Summit Shell Jacket</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Outdoor &amp; Running - Night Shade</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="text-lg font-black text-slate-900 dark:text-slate-100">$85.00</span>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group relative flex flex-col">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100">
+<img class="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500" data-alt="Yellow athletic shorts on model" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB91ePhMPPCqjBhP5GuqdY9bjALo8m6PhVV84rcffR7JHPuFE6qrnyGHjy6DAmtseSJlaAK99mWtVVQKjJc63uvaPcXI62-Ps0LMa0KMNeiSlcAURdcFcaoWhDCk2XFywjFM4qskzVq0LV0W1zlHU8ilPsQKCKm20J87pNyyjGcvv2z0vZSAOkyhtWrN1OIa6q_de7sxJWqMLjkwqn0FR-1XPNMgkIRxTWNro6rvkMH3QZ05vgLTXy9_jtZh0t25NJEv3xcwFcfpMfF"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                                -50%
+                            </div>
+<button class="absolute top-4 right-4 p-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-full text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/60 to-transparent">
+<button class="w-full bg-primary text-white py-3 rounded-lg font-bold text-sm hover:bg-primary/90 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    Quick Add
+                                </button>
+</div>
+</div>
+<div class="mt-4 flex flex-col">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Tempo Training Shorts</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Lightweight 3" - Citron</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="text-lg font-black text-primary">$19.99</span>
+<span class="text-sm text-slate-400 line-through font-medium">$39.99</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex items-center justify-center gap-2">
+<button class="p-2 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-primary text-white font-bold">1</button>
+<button class="w-10 h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-slate-600 dark:text-slate-400">2</button>
+<button class="w-10 h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-slate-600 dark:text-slate-400">3</button>
+<span class="px-2 text-slate-400">...</span>
+<button class="w-10 h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-slate-600 dark:text-slate-400">12</button>
+<button class="p-2 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<div class="space-y-6">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">fitbit</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-extrabold tracking-tight">Ivana Design</h2>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        Pushing the boundaries of performance and style. Ivana Design is built for those who refuse to compromise on their active lifestyle.
+                    </p>
+<div class="flex items-center gap-4">
+<a class="p-2 bg-slate-100 dark:bg-slate-900 rounded-lg text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="p-2 bg-slate-100 dark:bg-slate-900 rounded-lg text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+<a class="p-2 bg-slate-100 dark:bg-slate-900 rounded-lg text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">camera</span>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-6">Collections</h3>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">New Arrivals</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Best Sellers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Leggings &amp; Bottoms</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Tops &amp; Sports Bras</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-6">Support</h3>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Shipping Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Returns &amp; Exchanges</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Size Guide</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-6">Join the Community</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Get 10% off your first order and stay updated with new drops.</p>
+<form class="flex gap-2">
+<input class="flex-1 bg-slate-100 dark:bg-slate-900 border-none rounded-lg text-sm px-4 focus:ring-1 focus:ring-primary" placeholder="Your email" type="email"/>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors">Join</button>
+</form>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-400">
+<p>© 2024 Ivana Design. All rights reserved.</p>
+<div class="flex items-center gap-8">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
