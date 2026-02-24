@@ -1,0 +1,60 @@
+/* ============================================================================
+   #Mejoras Personalizadas: Modernidad y SEO
+============================================================================== */
+
+/* 1. Animación de entrada para las secciones de la Home */
+.home-sections-fade {
+    animation: fadeInPage 0.8s ease-out forwards;
+}
+
+@keyframes fadeInPage {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* 2. Espaciado y suavizado de bordes en secciones */
+.home-section {
+    margin-bottom: var(--spacing-5);
+}
+
+.home-section img {
+    border-radius: var(--border-radius);
+}
+
+/* 3. SEO/Accesibilidad: Ocultar texto sin perder rastreo de Google ni lectores de pantalla */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 4. Efecto de elevación sutil en productos (Modernidad) */
+.home-section-products .product-item {
+    transition: transform var(--transition-normal);
+}
+
+.home-section-products .product-item:hover {
+    transform: translateY(-5px);
+}
+
+/* 5. Accesibilidad: Respetar preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .home-sections-fade,
+    .home-section-products .product-item {
+        animation: none;
+        transition: none;
+    }
+}

@@ -1,0 +1,17 @@
+# System folders
+.gemini/
+.agent/
+.system_generated/
+.DS_Store
+Thumbs.db
+
+# Workspace / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific (if any)
+node_modules/
+dist/
+build/
