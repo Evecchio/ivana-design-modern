@@ -33,12 +33,12 @@
 			/* Brand Focus & Interaction */
 			.focus-primary:focus { border-color: #ee4b2b !important; box-shadow: 0 0 0 2px rgba(238, 75, 43, 0.15) !important; outline: none; }
 			
-			/* Out of stock diagonal line */
-			.js-variant-swatch[disabled] { cursor: not-allowed !important; opacity: 0.35 !important; }
-			.swatch-diagonal { width: 100%; height: 1.5px; background-color: #94a3b8; transform: rotate(45deg); border-radius: 99px; }
+			/* Card Symmetry & Backgrounds */
+			.js-product-container { background: white; border-radius: 4px; overflow: hidden; }
+			.img-absolute-centered { background-color: #f3f4f6 !important; } /* Match light grey in reference */
 			
-			/* Header transitions */
-			.js-mobile-search { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+			/* Line Clamp Utility */
+			.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 		</style>
 		<script>
 			document.addEventListener('DOMContentLoaded', () => {

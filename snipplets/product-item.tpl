@@ -36,88 +36,101 @@
 
 {% set custom_content %}
 	{% if not reduced_item %}
-		{# Product Info: Name, Price & Swatches in a fixed-height container for symmetry #}
-		<div class="flex-grow flex flex-col justify-between">
-			<div class="mb-3">
-				<a href="{{ product.url }}" title="{{ product.name }}" class="block mb-1">
-					<h3 class="text-sm font-extrabold text-slate-900 dark:text-white leading-tight text-balance uppercase tracking-tighter">{{ product.name }}</h3>
+		{# Main info container with rigid vertical alignment #}
+		<div class="flex-grow flex flex-col pt-3 pb-2 px-1">
+			
+			{# Row 1: Title (Fixed height for 2 lines) #}
+			<div class="min-h-[40px] mb-2">
+				<a href="{{ product.url }}" title="{{ product.name }}" class="block">
+					<h3 class="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight uppercase tracking-tighter line-clamp-2">{{ product.name }}</h3>
 				</a>
-				<div class="flex items-baseline gap-2">
+			</div>
+
+			{# Row 2: Pricing & Installments (Fixed baseline) #}
+			<div class="min-h-[44px] mb-3">
+				<div class="flex items-baseline gap-2 mb-0.5">
 					{% if product.compare_at_price > product.price %}
 						<span class="text-xs text-slate-400 line-through font-bold">{{ product.compare_at_price | money }}</span>
 					{% endif %}
-					<span class="text-lg font-black text-primary">{{ product.price | money }}</span>
+					<span class="text-[19px] font-black text-slate-900 dark:text-white tracking-tighter">{{ product.price | money }}</span>
 				</div>
+				{% if product.installments %}
+					<div class="text-[11px] text-slate-500 font-medium">
+						{{ product.installments.amount }} x {{ product.installments.installment_amount | money }} {{ product.installments.has_no_interest ? 'sin interés' : '' }}
+					</div>
+				{% endif %}
 			</div>
 
-			{# Variations / Colors Swatches - Solid Colors Only #}
-			{% if product.variations %}
-				<div class="js-color-swatches flex flex-wrap gap-1.5 mb-1" data-product-id="{{ product.id }}">
-					{% for variation in product.variations if variation.name | lower in ['color', 'cor', 'colores', 'cores'] %}
-						{% for option in variation.options %}
-							{% set variant_for_color = false %}
-							{% for v in product.variants if v.option1 == option.id or v.option2 == option.id or v.option3 == option.id %}
-								{% if not variant_for_color %}
-									{% set variant_for_color = v %}
-								{% endif %}
+			{# Row 3: Swatches & Color Name #}
+			<div class="min-h-[58px] mb-2">
+				{% if product.variations %}
+					<div class="js-color-swatches flex flex-wrap gap-1.5 mb-1" data-product-id="{{ product.id }}">
+						{% for variation in product.variations if variation.name | lower in ['color', 'cor', 'colores', 'cores'] %}
+							{% for option in variation.options %}
+								{% set variant_for_color = false %}
+								{% for v in product.variants if v.option1 == option.id or v.option2 == option.id or v.option3 == option.id %}
+									{% if not variant_for_color %}
+										{% set variant_for_color = v %}
+									{% endif %}
+								{% endfor %}
+								{% set color_available = variant_for_color and variant_for_color.available %}
+								<button
+									class="js-variant-swatch relative w-[26px] h-[26px] rounded-full border-2 p-0.5 transition-all flex items-center justify-center
+										{% if loop.first %}border-slate-900 scale-110 shadow-sm{% else %}border-slate-200 dark:border-slate-700{% endif %}
+										{% if color_available %}cursor-pointer hover:border-slate-900 hover:scale-110{% else %}opacity-20 cursor-not-allowed{% endif %}"
+									title="{{ option.name }}{% if not color_available %} — Sin stock{% endif %}"
+									{% if variant_for_color %}
+										data-variant-id="{{ variant_for_color.id }}"
+										data-variant-image="{{ variant_for_color.featured_image.src | default(product.featured_image.src) }}"
+										data-color-name="{{ option.name }}"
+									{% endif %}
+									{% if not color_available %}disabled aria-disabled="true"{% endif %}
+								>
+									<div class="w-full h-full rounded-full" style="background-color: {{ option.custom_data | default('#cccccc') }}; border: 1px solid rgba(0,0,0,0.08);"></div>
+									{% if not color_available %}
+										<div class="absolute inset-0 flex items-center justify-center rotate-45 pointer-events-none">
+											<div class="w-full h-[1.5px] bg-slate-400 rounded-full"></div>
+										</div>
+									{% endif %}
+								</button>
 							{% endfor %}
-							{% set color_available = variant_for_color and variant_for_color.available %}
-							<button
-								class="js-variant-swatch relative w-7 h-7 rounded-full border-2 p-0.5 transition-all flex items-center justify-center
-									{% if loop.first %}border-primary scale-110 ring-2 ring-primary/20{% else %}border-slate-200 dark:border-slate-700{% endif %}
-									{% if color_available %}cursor-pointer hover:border-primary hover:scale-110{% else %}opacity-30 cursor-not-allowed{% endif %}"
-								title="{{ option.name }}{% if not color_available %} — Sin stock{% endif %}"
-								{% if variant_for_color %}
-									data-variant-id="{{ variant_for_color.id }}"
-									data-variant-image="{{ variant_for_color.featured_image.src | default(product.featured_image.src) }}"
-									data-color-name="{{ option.name }}"
-								{% endif %}
-								{% if not color_available %}disabled aria-disabled="true"{% endif %}
-							>
-								<div class="w-full h-full rounded-full" style="background-color: {{ option.custom_data | default('#cccccc') }}; border: 1px solid rgba(0,0,0,0.12);"></div>
-								{% if not color_available %}
-									{# Diagonal out-of-stock line #}
-									<div class="absolute inset-0 flex items-center justify-center rotate-45 pointer-events-none">
-										<div class="w-full h-[1.5px] bg-slate-400 dark:bg-slate-500 rounded-full"></div>
-									</div>
-								{% endif %}
-							</button>
 						{% endfor %}
-					{% endfor %}
-				</div>
-
-				{# Selected color name #}
-				{% for variation in product.variations if variation.name | lower in ['color', 'cor', 'colores', 'cores'] %}
-					<p class="js-selected-color-name text-[10px] text-slate-500 dark:text-slate-400 font-semibold mb-3 uppercase tracking-wide">
-						{{ variation.options.first.name }}
-					</p>
-				{% endfor %}
-			{% endif %}
-
-			{# Savings Detail: Single row "AHORRO" #}
-			{% if product.compare_at_price > product.price or product.maxPaymentDiscount.value > 0 %}
-				{% set price_diff = product.compare_at_price > product.price ? (product.compare_at_price - product.price) : 0 %}
-				{% set payment_diff = product.price * (product.maxPaymentDiscount.value / 100) %}
-				<div class="mb-4 px-3 py-2 bg-green-50/50 dark:bg-green-900/10 rounded-lg border border-green-100/50 dark:border-green-800/30 flex items-center justify-between gap-2">
-					<div class="flex items-center gap-1 text-[10px] uppercase font-black text-green-700 dark:text-green-400 tracking-tighter">
-						<span class="material-symbols-outlined text-[14px]">verified</span>
-						{{ 'AHORRO' | translate }}
 					</div>
-					<span class="text-base font-black text-green-800 dark:text-green-300 tracking-tight">{{ (price_diff + payment_diff) | money }}</span>
-				</div>
-			{% else %}
-				{# Spacer for symmetry when there is no savings box #}
-				<div class="mb-4 h-[42px]"></div>
-			{% endif %}
-		</div>
 
-		{# Quick Add Form / Buy Button: Pushed to bottom #}
-		<form action="{{ store.cart_url }}" method="post" class="js-product-form js-quick-add-form mt-auto" data-store="product-item-{{ product.id }}">
-			<input type="hidden" name="add_to_cart" value="{{ product.variants.first.id }}" class="js-variant-input">
-			<button type="submit" class="js-addtocart js-prod-submit-form w-full bg-slate-900 dark:bg-primary text-white font-extrabold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-primary dark:hover:bg-white dark:hover:text-primary transition-all text-xs uppercase tracking-widest shadow-lg shadow-black/5">
-				<span class="material-symbols-outlined text-base">add_shopping_cart</span> {{ 'Agregar' | translate }}
-			</button>
-		</form>
+					{# Selected color name label #}
+					{% for variation in product.variations if variation.name | lower in ['color', 'cor', 'colores', 'cores'] %}
+						<p class="js-selected-color-name text-[9px] text-slate-400 font-bold uppercase tracking-wider">
+							{{ variation.options.first.name }}
+						</p>
+					{% endfor %}
+				{% endif %}
+			</div>
+
+			{# Row 4: Savings Box (Aligned at the same level) #}
+			<div class="mt-auto">
+				{% if product.compare_at_price > product.price or product.maxPaymentDiscount.value > 0 %}
+					{% set price_diff = product.compare_at_price > product.price ? (product.compare_at_price - product.price) : 0 %}
+					{% set payment_diff = product.price * (product.maxPaymentDiscount.value / 100) %}
+					<div class="mb-3 px-3 py-2 bg-white border border-green-200 rounded-lg flex items-center justify-between gap-2 shadow-sm">
+						<div class="flex items-center gap-1.5 text-[9px] uppercase font-black text-green-600 tracking-tighter">
+							<span class="material-symbols-outlined text-[13px] text-green-500">verified</span>
+							OPORTUNIDAD DE AHORRO
+						</div>
+						<span class="text-base font-black text-green-700 tracking-tight">{{ (price_diff + payment_diff) | money }}</span>
+					</div>
+				{% else %}
+					<div class="mb-3 h-[42px]"></div>
+				{% endif %}
+
+				{# Buy Button: Rigidly at the bottom #}
+				<form action="{{ store.cart_url }}" method="post" class="js-product-form js-quick-add-form" data-store="product-item-{{ product.id }}">
+					<input type="hidden" name="add_to_cart" value="{{ product.variants.first.id }}" class="js-variant-input">
+					<button type="submit" class="js-addtocart js-prod-submit-form w-full bg-[#111827] text-white font-black py-3.5 rounded-lg flex items-center justify-center gap-2 hover:bg-primary transition-all text-[11px] uppercase tracking-[0.1em]">
+						<span class="material-symbols-outlined text-base">add_shopping_cart</span> {{ 'AGREGAR' | translate }}
+					</button>
+				</form>
+			</div>
+		</div>
 		{{ component('subscriptions/subscription-message', {
 			subscription_classes: {
 				container: 'd-flex font-small font-md-normal text-accent font-weight-bold mt-2',
@@ -240,10 +253,10 @@
 			information: custom_content,
 			image: (product.compare_at_price > product.price or product.maxPaymentDiscount.value > 0 or product.has_percentage_discount) ? '<div class="absolute top-2 right-2 z-20 flex flex-col gap-1 items-end pointer-events-none">' ~ 
 				(product.compare_at_price > product.price ? 
-					'<span class="bg-primary text-white text-[11px] font-black px-2.5 py-1.5 rounded uppercase tracking-tighter shadow-md border border-white/20">' ~ (((product.compare_at_price - product.price) / product.compare_at_price * 100) | round) ~ '% OFF</span>' ~
-					'<span class="bg-green-600 text-white text-[13px] font-black px-3 py-2 rounded uppercase tracking-tighter shadow-md border border-white/20 leading-tight">' ~ ("Ahorrás" | translate) ~ '<br><span style="font-size:16px;letter-spacing:-0.5px">' ~ (product.compare_at_price - product.price) | money ~ '</span></span>'
+					'<span class="bg-[#111827] text-white text-[11px] font-black px-3 py-1.5 rounded-sm uppercase tracking-tighter shadow-md border border-white/10">' ~ (((product.compare_at_price - product.price) / product.compare_at_price * 100) | round) ~ '% OFF</span>' ~
+					'<span class="bg-[#16a34a] text-white text-[11px] font-black px-3 py-2 rounded-sm uppercase tracking-tighter shadow-md border border-white/10 leading-[1.1] text-center">' ~ ("AHORRÁS" | translate) ~ '<br><span class="text-[17px] tracking-tighter">$' ~ (product.compare_at_price_raw - product.price_raw) | number_format(0, ',', '.') ~ '</span></span>'
 				 : '') ~
-				(product.maxPaymentDiscount.value > 0 ? '<span class="bg-slate-900/90 text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-tighter shadow-md border border-white/10">+' ~ product.maxPaymentDiscount.value ~ '% ' ~ ("OFF Extra" | translate) ~ '</span>' : '') ~
+				(product.maxPaymentDiscount.value > 0 ? '<span class="bg-[#1a202c] text-white text-[9px] font-black px-2 py-1 rounded-sm uppercase tracking-tighter shadow-md border border-white/5">+' ~ product.maxPaymentDiscount.value ~ '% OFF EXTRA</span>' : '') ~
 				'</div>' : '',
 		},
 	})
