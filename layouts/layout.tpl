@@ -29,6 +29,15 @@
 		<style>
 			.no-scrollbar::-webkit-scrollbar { display: none; }
 			.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+			
+			/* Brand Focus & Interaction */
+			.focus-primary:focus { border-color: #ee4b2b !important; box-shadow: 0 0 0 2px rgba(238, 75, 43, 0.15) !important; outline: none; }
+			
+			/* Out of stock diagonal line animation/logic */
+			.js-variant-swatch[disabled] { cursor: not-allowed !important; opacity: 0.35 !important; }
+			
+			/* Search bar expansion logic (mobile) */
+			.search-expanded { grid-column: 1 / -1; order: 10; width: 100%; margin-top: 0.5rem; }
 		</style>
 		<script>
 			document.addEventListener('DOMContentLoaded', () => {

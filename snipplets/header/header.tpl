@@ -17,17 +17,19 @@
 				<a class="text-sm font-semibold hover:text-primary transition-colors {% if item.current %}text-primary{% endif %}" href="{{ item.url }}">{{ item.name }}</a>
 			{% endfor %}
 		</nav>
-		<div class="flex-1 max-w-md hidden md:block">
-			{{ component('search/search-form', {
-				form_classes: { 
-					input_group: 'relative m-0', 
-					input: 'w-full bg-primary/5 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20', 
-					submit: 'material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg', 
-					delete_content: 'hidden',  
-					search_suggestions_container: 'z-50'
-				}
-				}) 
-			}}
+		<div class="flex-1 max-w-lg hidden md:block">
+			<form action="{{ store.search_url }}" method="get" class="relative group">
+				<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+					<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors text-xl">search</span>
+				</div>
+				<input 
+					type="text" 
+					name="q" 
+					placeholder="{{ '¿Qué estás buscando?' | translate }}" 
+					class="w-full bg-slate-100 dark:bg-slate-800/50 border-2 border-transparent py-2.5 pl-11 pr-4 rounded-xl text-sm font-medium focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/5 transition-all outline-none"
+					autocomplete="off"
+				/>
+			</form>
 		</div>
 		<div class="flex items-center gap-3">
 			{% include "snipplets/header/utilities/account.tpl" %}

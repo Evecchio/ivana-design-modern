@@ -36,59 +36,83 @@
 
 {% set custom_content %}
 	{% if not reduced_item %}
-		{# Product Info: Name & Price #}
-		<div class="mb-3">
-			<a href="{{ product.url }}" title="{{ product.name }}" class="block mb-1">
-				<h3 class="text-sm font-extrabold text-slate-900 dark:text-white leading-tight text-balance uppercase tracking-tighter">{{ product.name }}</h3>
-			</a>
-			<div class="flex items-baseline gap-2">
-				<span class="text-lg font-black text-primary">{{ product.price | money }}</span>
-				{% if product.compare_at_price > product.price %}
-					<span class="text-xs text-slate-400 line-through font-bold">{{ product.compare_at_price | money }}</span>
-				{% endif %}
-			</div>
-		</div>
-
-		{# Variations / Colors Swatches - Solid Colors Only #}
-		{% if product.variations %}
-			<div class="flex flex-wrap gap-1.5 mb-4">
-				{% for variation in product.variations if variation.name | lower in ['color', 'cor', 'colores', 'cores'] %}
-					{% for option in variation.options %}
-						{% set variant_for_color = false %}
-						{% for v in product.variants if v.option1 == option.id or v.option2 == option.id or v.option3 == option.id %}
-							{% if not variant_for_color %}
-								{% set variant_for_color = v %}
-							{% endif %}
-						{% endfor %}
-						<button 
-							class="js-variant-swatch w-6 h-6 rounded-full border-2 border-slate-200 dark:border-slate-800 p-0.5 hover:border-primary transition-all cursor-pointer flex items-center justify-center {% if loop.first %}border-primary scale-110{% endif %}" 
-							title="{{ option.name }}"
-							{% if variant_for_color %}data-variant-id="{{ variant_for_color.id }}"{% endif %}
-						>
-							<div class="w-full h-full rounded-full" style="background-color: {{ option.custom_data | default('#ccc') }}; border: 1px solid rgba(0,0,0,0.1);"></div>
-						</button>
-					{% endfor %}
-				{% endfor %}
-			</div>
-		{% endif %}
-
-		{# Savings Detail - Moved Above the Button #}
-		{% if product.compare_at_price > product.price or product.maxPaymentDiscount.value > 0 %}
-			<div class="mb-3 p-2.5 bg-green-50/50 dark:bg-green-900/10 rounded-lg border border-green-100/50 dark:border-green-800/30">
-				<div class="text-[9px] uppercase font-black text-green-700 dark:text-green-400 tracking-tighter">
-					{% set price_diff = product.compare_at_price > product.price ? (product.compare_at_price - product.price) : 0 %}
-					{% set payment_diff = product.price * (product.maxPaymentDiscount.value / 100) %}
-					<div class="flex items-center gap-1 mb-0.5">
-						<span class="material-symbols-outlined text-[12px]">verified</span>
-						{{ 'Oportunidad de ahorro' | translate }}
-					</div>
-					<div class="text-xs text-green-800 dark:text-green-300">{{ 'Total:' | translate }} <span class="font-black underline underline-offset-2">{{ (price_diff + payment_diff) | money }}</span></div>
+		{# Product Info: Name, Price & Swatches in a fixed-height container for symmetry #}
+		<div class="flex-grow flex flex-col justify-between">
+			<div class="mb-3">
+				<a href="{{ product.url }}" title="{{ product.name }}" class="block mb-1">
+					<h3 class="text-sm font-extrabold text-slate-900 dark:text-white leading-tight text-balance uppercase tracking-tighter">{{ product.name }}</h3>
+				</a>
+				<div class="flex items-baseline gap-2">
+					{% if product.compare_at_price > product.price %}
+						<span class="text-xs text-slate-400 line-through font-bold">{{ product.compare_at_price | money }}</span>
+					{% endif %}
+					<span class="text-lg font-black text-primary">{{ product.price | money }}</span>
 				</div>
 			</div>
-		{% endif %}
 
-		{# Quick Add Form / Buy Button #}
-		<form action="{{ store.cart_url }}" method="post" class="js-product-form js-quick-add-form mb-4" data-store="product-item-{{ product.id }}">
+			{# Variations / Colors Swatches - Solid Colors Only #}
+			{% if product.variations %}
+				<div class="js-color-swatches flex flex-wrap gap-1.5 mb-1" data-product-id="{{ product.id }}">
+					{% for variation in product.variations if variation.name | lower in ['color', 'cor', 'colores', 'cores'] %}
+						{% for option in variation.options %}
+							{% set variant_for_color = false %}
+							{% for v in product.variants if v.option1 == option.id or v.option2 == option.id or v.option3 == option.id %}
+								{% if not variant_for_color %}
+									{% set variant_for_color = v %}
+								{% endif %}
+							{% endfor %}
+							{% set color_available = variant_for_color and variant_for_color.available %}
+							<button
+								class="js-variant-swatch relative w-7 h-7 rounded-full border-2 p-0.5 transition-all flex items-center justify-center
+									{% if loop.first %}border-primary scale-110 ring-2 ring-primary/20{% else %}border-slate-200 dark:border-slate-700{% endif %}
+									{% if color_available %}cursor-pointer hover:border-primary hover:scale-110{% else %}opacity-30 cursor-not-allowed{% endif %}"
+								title="{{ option.name }}{% if not color_available %} — Sin stock{% endif %}"
+								{% if variant_for_color %}
+									data-variant-id="{{ variant_for_color.id }}"
+									data-variant-image="{{ variant_for_color.featured_image.src | default(product.featured_image.src) }}"
+									data-color-name="{{ option.name }}"
+								{% endif %}
+								{% if not color_available %}disabled aria-disabled="true"{% endif %}
+							>
+								<div class="w-full h-full rounded-full" style="background-color: {{ option.custom_data | default('#cccccc') }}; border: 1px solid rgba(0,0,0,0.12);"></div>
+								{% if not color_available %}
+									{# Diagonal out-of-stock line #}
+									<div class="absolute inset-0 flex items-center justify-center rotate-45 pointer-events-none">
+										<div class="w-full h-[1.5px] bg-slate-400 dark:bg-slate-500 rounded-full"></div>
+									</div>
+								{% endif %}
+							</button>
+						{% endfor %}
+					{% endfor %}
+				</div>
+
+				{# Selected color name #}
+				{% for variation in product.variations if variation.name | lower in ['color', 'cor', 'colores', 'cores'] %}
+					<p class="js-selected-color-name text-[10px] text-slate-500 dark:text-slate-400 font-semibold mb-3 uppercase tracking-wide">
+						{{ variation.options.first.name }}
+					</p>
+				{% endfor %}
+			{% endif %}
+
+			{# Savings Detail: Single row "AHORRO" #}
+			{% if product.compare_at_price > product.price or product.maxPaymentDiscount.value > 0 %}
+				{% set price_diff = product.compare_at_price > product.price ? (product.compare_at_price - product.price) : 0 %}
+				{% set payment_diff = product.price * (product.maxPaymentDiscount.value / 100) %}
+				<div class="mb-4 px-3 py-2 bg-green-50/50 dark:bg-green-900/10 rounded-lg border border-green-100/50 dark:border-green-800/30 flex items-center justify-between gap-2">
+					<div class="flex items-center gap-1 text-[10px] uppercase font-black text-green-700 dark:text-green-400 tracking-tighter">
+						<span class="material-symbols-outlined text-[14px]">verified</span>
+						{{ 'AHORRO' | translate }}
+					</div>
+					<span class="text-base font-black text-green-800 dark:text-green-300 tracking-tight">{{ (price_diff + payment_diff) | money }}</span>
+				</div>
+			{% else %}
+				{# Spacer for symmetry when there is no savings box #}
+				<div class="mb-4 h-[42px]"></div>
+			{% endif %}
+		</div>
+
+		{# Quick Add Form / Buy Button: Pushed to bottom #}
+		<form action="{{ store.cart_url }}" method="post" class="js-product-form js-quick-add-form mt-auto" data-store="product-item-{{ product.id }}">
 			<input type="hidden" name="add_to_cart" value="{{ product.variants.first.id }}" class="js-variant-input">
 			<button type="submit" class="js-addtocart js-prod-submit-form w-full bg-slate-900 dark:bg-primary text-white font-extrabold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-primary dark:hover:bg-white dark:hover:text-primary transition-all text-xs uppercase tracking-widest shadow-lg shadow-black/5">
 				<span class="material-symbols-outlined text-base">add_shopping_cart</span> {{ 'Agregar' | translate }}
@@ -180,7 +204,7 @@
 		labels: labels_value,
 		price_compare: price_compare_value,
 		product_item_classes: {
-			item: 'js-product-container js-item-product ' ~ item_spacing_classes ~ slide_item_class ~ reduced_item_classes,
+			item: 'js-product-container js-item-product h-full flex flex-col ' ~ item_spacing_classes ~ slide_item_class ~ reduced_item_classes,
 			name: 'hidden',
 			image: image_classes,
 			information: 'd-flex flex-column pt-3 pb-2 text-left',
